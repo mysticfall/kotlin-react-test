@@ -1,3 +1,2 @@
 
-rootProject.name = "react-test"
-
+rootProject.name = "kotlin-react-test"

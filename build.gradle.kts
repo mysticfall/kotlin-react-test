@@ -2,7 +2,7 @@ plugins {
     kotlin("js") version "1.5.31"
 }
 
-group = "mysticfall.kotlin"
+group = "io.github.mysticfall"
 version = "1.0-SNAPSHOT"
 
 repositories {
