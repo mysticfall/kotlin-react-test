@@ -13,9 +13,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - name: Install Dependencies
-        run: sudo apt update && sudo apt install -y gnupg2
-
       - uses: actions/checkout@v2
 
       - name: Set up Java
@@ -32,7 +29,7 @@ jobs:
 
       - name: Install GPG Secret Key
         run: |
-          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import gpg \
+          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpgv --batch --import gpg \
             --list-secret-keys --keyid-format LONG
 
       - name: Publish Package
