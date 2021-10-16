@@ -30,10 +30,12 @@ jobs:
       - name: Perform Tests
         run: gradle check
 
-      - name: Install GPG Secret Key
-        run: |
-          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import && \
-          gpg --list-secret-keys --keyid-format LONG
+      - name: Import GPG Key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v4
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Publish Package
         run: |
