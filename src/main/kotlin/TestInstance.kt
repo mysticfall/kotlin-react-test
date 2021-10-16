@@ -7,7 +7,6 @@ import react.ComponentType
 import react.Props
 import kotlin.js.Json
 
-
 external interface TestInstance<T : Props> {
 
     var type: ComponentType<T>
