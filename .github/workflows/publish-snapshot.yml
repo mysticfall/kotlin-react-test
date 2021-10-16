@@ -14,7 +14,7 @@ jobs:
       packages: write
     steps:
       - name: Install Dependencies
-        run: sudo apt update && sudo apt install -y gpg
+        run: sudo apt update && sudo apt install -y gnupg2
 
       - uses: actions/checkout@v2
 
@@ -30,7 +30,7 @@ jobs:
       - name: Perform Tests
         run: gradle check
 
-      - name: Install gpg secret key
+      - name: Install GPG Secret Key
         run: |
           cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import gpg \
             --list-secret-keys --keyid-format LONG
