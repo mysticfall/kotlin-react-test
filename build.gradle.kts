@@ -106,9 +106,9 @@ publishing {
 }
 
 signing {
-//    setRequired({
-//        gradle.taskGraph.hasTask("publish")
-//    })
+    setRequired({
+        gradle.taskGraph.hasTask("publish")
+    })
 
     useGpgCmd()
 
