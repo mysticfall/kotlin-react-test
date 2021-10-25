@@ -1,9 +1,9 @@
 package mysticfall.kotlin.react.test
 
-import react.ComponentType
-import react.RBuilder
+import org.w3c.dom.Element
+import react.*
 import react.dom.div
-import react.react
+import kotlin.js.json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -116,5 +116,43 @@ class TestRendererTest : ReactTestSupport {
         } else {
             assertTrue(component.getInstance() is TestClassComponent, "Unexpected type of getInstance()")
         }
+    }
+
+    @Test
+    fun testCreateNodeMock() {
+        @Suppress("LocalVariableName")
+        val ComponentWithRef = fc<TestProps> {
+            val elem = createRef<Element>()
+            val (name, setName) = useState("initial")
+
+            useEffect(name) {
+                setName(elem.current?.className ?: "no ref")
+            }
+
+            div(classes = "test-component") {
+                ref = elem
+
+                +name
+            }
+        }
+
+        fun mock(elem: ReactElement): Any {
+            assertEquals("test-component", elem.props.asDynamic().className)
+
+            return json(Pair("className", "test"))
+        }
+
+        lateinit var result: TestRenderer
+
+        act {
+            result = render(::mock) {
+                ComponentWithRef {}
+            }
+        }
+
+        val data = result.toJSON().asDynamic()
+
+        assertEquals("test-component", data.props.className)
+        assertEquals("test", data.children[0])
     }
 }
