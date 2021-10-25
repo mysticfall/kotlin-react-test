@@ -12,13 +12,13 @@ which can be used to unit test React components in a Kotlin/JS project.
 
 With Gradle (using Kotlin DSL):
 ```kotlin
-implementation("io.github.mysticfall:kotlin-react-test:1.0")
+implementation("io.github.mysticfall:kotlin-react-test:1.1.0")
 ```
 
 Alternatively, using Groovy DSL:
 
 ```groovy
-implementation "io.github.mysticfall:kotlin-react-test:1.0"
+implementation "io.github.mysticfall:kotlin-react-test:1.1.0"
 ```
 
 ### Code Example
