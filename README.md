@@ -1,3 +1,6 @@
+![Build](https://github.com/mysticfall/kotlin-react-test/workflows/publish-snapshot/badge.svg)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.mysticfall/kotlin-react-test)](https://mvnrepository.com/artifact/io.github.mysticfall/kotlin-react-test)
+
 # Kotlin API for React Test Renderer
 
 Kotlin wrapper for [React Test Renderer](https://reactjs.org/docs/test-renderer.html), 
