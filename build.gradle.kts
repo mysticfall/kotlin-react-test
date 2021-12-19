@@ -1,7 +1,7 @@
 import org.gradle.api.artifacts.repositories.PasswordCredentials
 
 plugins {
-    kotlin("js") version "1.5.31"
+    kotlin("js") version "1.6.10"
 
     id("maven-publish")
 
