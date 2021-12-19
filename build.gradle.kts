@@ -1,5 +1,3 @@
-import org.gradle.api.artifacts.repositories.PasswordCredentials
-
 plugins {
     kotlin("js") version "1.6.10"
 
@@ -39,9 +37,7 @@ dependencies {
 }
 
 kotlin {
-    js(IR) {
-        binaries.executable()
-
+    js(BOTH) {
         nodejs {
             testTask {
                 useMocha()
@@ -55,7 +51,13 @@ publishing {
         create<MavenPublication>("main") {
             from(components["kotlin"])
 
-            artifact(tasks.getByName<Zip>("jsSourcesJar"))
+            if (tasks.names.contains("jsSourcesJar")) {
+                artifact(tasks.getByName<Zip>("jsSourcesJar"))
+            }
+
+            if (tasks.names.contains("jsIrSourcesJar")) {
+                artifact(tasks.getByName<Zip>("jsIrSourcesJar"))
+            }
 
             pom {
                 name.set("Kotlin API for React Test Renderer")
