@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "io.github.mysticfall"
-version = "1.2.0-SNAPSHOT"
+version = "1.2.0"
 
 val isReleasedVersion = !project.version.toString().endsWith("-SNAPSHOT")
 
