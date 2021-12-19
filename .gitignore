@@ -4,3 +4,5 @@
 
 # IntelliJ
 /.idea
+
+/kotlin-js-store/yarn.lock
