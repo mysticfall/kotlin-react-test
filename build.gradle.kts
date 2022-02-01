@@ -29,6 +29,7 @@ fun versionOf(name: String, isWrapper: Boolean = true): String {
 
 dependencies {
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react:${versionOf("react")}")
+    implementation("org.jetbrains.kotlin-wrappers:kotlin-react-legacy:${versionOf("react")}")
     implementation("org.jetbrains.kotlin-wrappers:kotlin-react-dom:${versionOf("react")}")
 
     implementation(npm("react-test-renderer", versionOf("react", isWrapper = false)))

@@ -2,6 +2,11 @@ package mysticfall.kotlin.react.test
 
 import kotlinext.js.jso
 import react.dom.*
+import react.dom.html.ReactHTML.a
+import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.h1
+import react.dom.html.ReactHTML.h5
+import react.dom.html.ReactHTML.p
 import react.react
 import kotlin.js.json
 import kotlin.test.*
@@ -18,7 +23,8 @@ class TestInstanceTest : ReactTestSupport {
                 div {
                     +"Div 3"
 
-                    div(classes = "selected") {
+                    div {
+                        attrs.className = "selected"
                         +"Div 4"
                     }
                 }
@@ -63,7 +69,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testFindAll() {
         val renderer = render {
             div {
-                div(classes = "selected") {
+                div {
+                    attrs.className = "selected"
                     +"Div 1"
                 }
                 div {
@@ -72,7 +79,8 @@ class TestInstanceTest : ReactTestSupport {
                 div {
                     +"Div 3"
 
-                    div(classes = "selected") {
+                    div {
+                        attrs.className = "selected"
                         +"Div 4"
                     }
                 }
@@ -354,7 +362,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testFindByPropsJson() {
         val renderer = render {
             div {
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     attrs.href = "#anchor1"
 
                     +"Link 1"
@@ -364,7 +373,8 @@ class TestInstanceTest : ReactTestSupport {
 
                     +"Link 2"
                 }
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     +"Link 3"
                 }
             }
@@ -382,7 +392,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testFindByPropsJsonNoMatch() {
         val renderer = render {
             div {
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     +"Link 1"
                 }
             }
@@ -399,10 +410,12 @@ class TestInstanceTest : ReactTestSupport {
     fun testFindByPropsJsonMultipleMatches() {
         val renderer = render {
             div {
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     +"Link 1"
                 }
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     +"Link 2"
                 }
             }
@@ -463,7 +476,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testFindAllByPropsJsonNoMatch() {
         val renderer = render {
             div {
-                a(classes = "selected") {
+                a {
+                    attrs.className = "selected"
                     attrs.href = "#anchor1"
                 }
             }
@@ -530,7 +544,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testProps() {
         val renderer = render {
             div {
-                h5(classes = "title") {
+                h5 {
+                    attrs.className = "title"
                     +"Heading"
                 }
                 TestFuncComponent {
@@ -555,7 +570,8 @@ class TestInstanceTest : ReactTestSupport {
     fun testParent() {
         val renderer = render {
             div {
-                div(classes = "header") {
+                div {
+                    attrs.className = "header"
                     p {
                         +"Body"
                     }

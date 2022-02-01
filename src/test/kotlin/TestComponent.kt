@@ -1,8 +1,9 @@
 package mysticfall.kotlin.react.test
 
 import react.*
-import react.dom.div
-import react.dom.h1
+import react.dom.html.ReactHTML.div
+import react.dom.html.ReactHTML.h1
+import react.dom.html.ReactHTML.style
 
 external interface TestProps : Props {
     var name: String
@@ -19,8 +20,10 @@ val TestFuncComponent = fc<TestProps> { props ->
         setName("Updated: ${props.name}")
     }
 
-    div(classes = "test-component") {
-        h1(classes = "title") {
+    div {
+        attrs.className = "test-component"
+        h1 {
+            attrs.className = "title"
             +name
         }
     }
@@ -39,8 +42,10 @@ class TestClassComponent(props: TestProps) : RComponent<TestProps, TestState>(pr
     }
 
     override fun RBuilder.render() {
-        div(classes = "test-component") {
-            h1(classes = "title") {
+        div {
+            attrs.className = "test-component"
+            h1 {
+                attrs.className = "title"
                 +state.name
             }
         }
