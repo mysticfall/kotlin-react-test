@@ -2,7 +2,7 @@ package mysticfall.kotlin.react.test
 
 import org.w3c.dom.Element
 import react.*
-import react.dom.div
+import react.dom.html.ReactHTML.div
 import kotlin.js.json
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -51,15 +51,13 @@ class TestRendererTest : ReactTestSupport {
           |{
           |  "type": "div",
           |  "props": {
-          |     "className": "test-component",
-          |     "style": {}
+          |     "className": "test-component"
           |  },
           |  "children": [
           |     {
           |         "type": "h1",
           |         "props": {
-          |             "className": "title",
-          |             "style": {}
+          |             "className": "title"
           |         },
           |         "children": [
           |             "Updated: Test"
@@ -92,12 +90,12 @@ class TestRendererTest : ReactTestSupport {
     fun testUpdate() = withComponents { type, component ->
         act {
             update(component) {
-                div(classes = "test") {}
+                div { attrs.className = "test"}
             }
         }
 
         val actual = JSON.stringify(component.toJSON())
-        val expected = """{"type":"div","props":{"className":"test","style":{}},"children":null}"""
+        val expected = """{"type":"div","props":{"className":"test"},"children":null}"""
 
         assertEquals(expected, actual, "Unexpected component state after update for $type")
     }
@@ -129,7 +127,8 @@ class TestRendererTest : ReactTestSupport {
                 setName(elem.current?.className ?: "no ref")
             }
 
-            div(classes = "test-component") {
+            div {
+                attrs.className = "test-component"
                 ref = elem
 
                 +name
